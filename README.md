@@ -7,7 +7,7 @@ Admin dashboard cho hệ thống e-learning, xây dựng bằng **Next.js 16 (Ap
 - Next.js 16 + React 19
 - TypeScript (strict mode)
 - Tailwind CSS + shadcn/ui
-- NextAuth v4 (JWT)
+- Custom auth flow (cookie token + SSO OAuth2)
 - next-intl (i18n: `en`, `vi`)
 - Zustand + TanStack Query
 - Axios
@@ -66,8 +66,6 @@ pnpm format:check
 
 Tham chiếu mẫu ở `.env.example`:
 
-- `NEXTAUTH_URL`
-- `NEXTAUTH_SECRET`
 - `NEXT_PUBLIC_SSO_TOKEN_API`
 - `NEXT_PUBLIC_SSO_LOGIN_PAGE`
 - `NEXT_PUBLIC_SSO_LOGOUT_PAGE`
@@ -144,18 +142,21 @@ src/
 
 ## Authentication
 
-Dùng NextAuth v4 với JWT strategy, gồm 2 luồng:
+Dự án hiện **không dùng NextAuth**. Authentication đang dùng flow riêng, gồm 2 luồng:
 
 1. **SSO** (qua IIG KAPI)
 2. **Credentials fallback** (dev/fallback)
 
 Các phần chính:
 
-- NextAuth config: `src/lib/auth.ts`
+- Auth API + hooks: `src/features/auth/auth.api.ts`, `src/features/auth/auth.query.ts`
+- Cookie/token helpers: `src/lib/cookies.ts`, `src/lib/storage.ts`
 - SSO login page: `src/app/(auth)/sign-in/page.tsx`
 - OAuth callback/login processing: `src/app/user/login/page.tsx`
 - API clients: `src/apis/base-api.ts`, `src/apis/sso-api.ts`
-- Route protection/redirect: `src/proxy.ts`
+- Route protection + refresh token: `src/proxy.ts`
+
+Token được lưu bằng cookie (`accessToken`, `refreshToken`), và `baseApi` sẽ tự động thử refresh khi gặp `401`.
 
 ## i18n
 
@@ -185,8 +186,3 @@ Khi thêm text mới, luôn cập nhật cả 2 file `en.json` và `vi.json`.
 - Dùng `cn()` từ `src/lib/utils.ts` cho className condition
 - `'use client'` chỉ khi cần hooks/state/browser APIs
 - Giữ style theo project: single quotes, no semicolons, width 100
-
-## Notes
-
-- README này đã được cập nhật theo cấu trúc code hiện tại trong workspace.
-- Nếu bạn đổi kiến trúc thư mục (đặc biệt phần `features/` hoặc auth flow), hãy cập nhật README tương ứng để onboarding dễ hơn.
