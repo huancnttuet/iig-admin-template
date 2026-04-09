@@ -73,7 +73,6 @@ Tham chiếu mẫu ở `.env.example`:
 - `NEXT_PUBLIC_SSO_CLIENT_ID`
 - `NEXT_PUBLIC_SSO_REDIRECT_URI`
 - `NEXT_PUBLIC_SSO_SCOPE`
-- `NEXT_PUBLIC_SSO_PROFILE_URL`
 
 ### Lưu ý API base URL
 
