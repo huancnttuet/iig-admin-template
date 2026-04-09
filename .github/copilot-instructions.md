@@ -9,7 +9,6 @@ This is an e-learning admin dashboard built with Next.js 16 (App Router), TypeSc
 - **Framework:** Next.js 16 (App Router, Turbopack default)
 - **Language:** TypeScript (strict mode)
 - **Styling:** Tailwind CSS + shadcn/ui
-- **Auth:** NextAuth v4 (SSO via IIG KAPI OAuth2 + credentials fallback, JWT)
 - **State:** Zustand 5 (client) + TanStack Query 5 (server)
 - **Forms:** AutoForm (Zod → auto-generated forms) + React Hook Form + Zod
 - **HTTP:** Axios

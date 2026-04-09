@@ -62,26 +62,20 @@ applyTo: '**/*.tsx, **/*.ts, **/*.jsx, **/*.js, **/*.css'
   - `<domain>.type.ts`, `<domain>.schema.ts`, `<domain>.api.ts`, `<domain>.query.ts`, `index.ts`
 - Add new base URLs via `NEXT_PUBLIC_*` env vars, read directly in client files with sane local fallbacks
 
-## 8. Authentication
-
-- NextAuth v4 (JWT strategy) configuration is in `src/lib/auth.ts`
-- SSO and credentials login are supported
-- Use `getServerSession()` in server contexts and `useSession()` in client contexts
-
-## 9. Internationalization
+## 8. Internationalization
 
 - Locale messages: `src/i18n/messages/en.json` and `src/i18n/messages/vi.json`
 - Add translation keys to both locale files
 - Use `useTranslations()` for UI text
 
-## 10. Forms (AutoForm)
+## 9. Forms (AutoForm)
 
 - Define Zod schemas in `src/services/<domain>/<domain>.schema.ts`
 - Use `fieldConfig()` from `@/lib/autoform`
 - Wrap schemas using `new ZodProvider(schema)` for `<AutoForm>`
 - Use `defaultValues` for edit forms
 
-## 11. Styling & Code Quality
+## 10. Styling & Code Quality
 
 - Tailwind utility-first styling + shared CSS variables from `src/app/globals.css`
 - Code style: single quotes, no semicolons, 100-char print width

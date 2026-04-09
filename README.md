@@ -83,7 +83,7 @@ Trong code hiện tại, Axios chính (`src/apis/base-api.ts`) đang đọc:
 
 Vì vậy nếu backend chính chưa hoạt động đúng, hãy thêm biến này vào `.env.development` (ngoài các biến có sẵn trong `.env.example`).
 
-## Kiến trúc thư mục (thực tế hiện tại)
+## Kiến trúc thư mục
 
 ```text
 src/
@@ -139,13 +139,6 @@ src/
 - Sidebar menu ở `src/configs/sidebar.ts` (`useSidebarData()`)
 - `src/app/admin/layout.tsx` render sidebar + header chung
 - Mỗi page admin chỉ cần bọc nội dung trong `Main`
-
-## Authentication
-
-Dự án hiện **không dùng NextAuth**. Authentication đang dùng flow riêng, gồm 2 luồng:
-
-1. **SSO** (qua IIG KAPI)
-2. **Credentials fallback** (dev/fallback)
 
 Các phần chính:
 

@@ -12,7 +12,6 @@ Instructions for the b2b-admin-v2 project built with Next.js 16 (App Router), Ta
 - Next.js 16 (App Router) with Turbopack (default bundler)
 - TypeScript strict mode
 - Tailwind CSS with shadcn/ui design system
-- NextAuth v4 for authentication (JWT strategy)
 - Zustand 5 for client state management
 - TanStack Query 5 for server state
 - AutoForm (Zod → auto-generated forms) + React Hook Form + Zod
@@ -105,15 +104,6 @@ Use `<Main fixed>` for pages that need a fixed-height scrollable layout (e.g., c
 - Language switching is handled by `LanguageSwitcher` component via cookies + `router.refresh()`
 - Locale config & supported locales defined in `src/i18n/config.ts`
 - Server-side locale resolution in `src/i18n/request.ts`
-
-### Authentication
-
-- NextAuth v4 with two providers: SSO (IIG KAPI OAuth2) + Credentials (fallback)
-- Use `getServerSession()` in Server Components for auth checks
-- Use `useSession()` in Client Components
-- Check `session.provider === 'sso'` to determine auth method
-- Protect API routes with session validation
-- Auth config is in `src/lib/auth.ts`
 
 ### Forms (AutoForm)
 
